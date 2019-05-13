@@ -93,6 +93,9 @@ class PaymentController extends Controller
     {
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
+        $payment_id = $_GET['paymentId'];
+        // dd($string);
+        // dd($payment_id);
 		/** clear the session payment ID **/
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
@@ -106,9 +109,21 @@ class PaymentController extends Controller
         $result = $payment->execute($execution, $this->_api_context);
 		if ($result->getState() == 'approved') {
 			\Session::put('success', 'Payment success');
-            return Redirect::route('/');
+            return Redirect::route('success');
 		}
 		\Session::put('error', 'Payment failed');
-        return Redirect::route('/');
+        return Redirect::route('cancel');
+	}
+
+	public function success() {
+
+		return view('success');
+
+	}
+
+	public function cancel() {
+
+		return view('cancel');
+
 	}
 }

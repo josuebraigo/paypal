@@ -22,3 +22,11 @@ body {
   text-align: center;
 }
 
+#home .success {
+  color: #2ECC40;
+}
+
+#home .cancel {
+  color: #FF4136;
+}
+

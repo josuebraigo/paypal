@@ -24,7 +24,7 @@
       <form method="POST" id="payment-form" action="{!! URL::to('paypal') !!}">
         <h1>Pago con Paypal</h1>
         {{ csrf_field() }}
-        <input type="number" name="monto" placeholder="Monto">
+        <input type="number" name="amount" placeholder="Monto">
         <input type="submit" value="Pagar">
       </form>
     </div>

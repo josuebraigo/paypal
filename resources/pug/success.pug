@@ -10,22 +10,4 @@ html
 		link(rel="stylesheet" type="text/css" href="/css/styles.css")
 	body#home
 		.container
-			@if($message = Session::get('Success'))
-			.success
-				span(onclick="this.parentElement.style.display='none'") &times;
-				p {!! $message !!}
-			<?php Session::forget('success');?>
-			@endif
-
-			@if($message = Session::get('Success'))
-			.error
-				span(onclick="this.parentElement.style.display='none'") &times;
-				p {!! $message !!}
-			<?php Session::forget('error');?>
-			@endif
-
-			form(method="POST" id="payment-form" action="{!! URL::to('paypal') !!}")
-				h1 Pago con Paypal
-				{{ csrf_field() }}
-				input(type="number" name="amount" placeholder="Monto")
-				input(type="submit" value="Pagar")
+			h1.success Pago realizado exitosamente

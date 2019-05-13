@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::post('paypal', 'PaymentController@payWithpaypal');
-Route::get('status', 'PaymentController@getPaymentStatus');
+Route::get('/', ['as' => '/', 'uses' => 'BaseController@index']);
+Route::post('/paypal', 'PaymentController@payWithpaypal');
+Route::get('/status', ['as' => 'status', 'uses' => 'PaymentController@getPaymentStatus']);
+Route::get('/success', ['as' => 'success', 'uses' => 'PaymentController@success']);
+Route::get('/cancel', ['as' => 'cancel', 'uses' => 'PaymentController@cancel']);
